@@ -4,8 +4,6 @@ include __DIR__."/../templates/layout.html.php";
 
 $id2 = $_POST['id2'];
 
-//Add hidden value in form == id
-
 
 if(isset($_POST['jokeEntryUpdate'])){
     
@@ -20,26 +18,18 @@ try {
     $stq->bindValue(':newText', $_POST['jokeEntryUpdate']);
     $stq->execute();
 
-    // $pdo->exec($q);
-
-    // $stq = $pdo->prepare($q);
-    // $stq->bindValue(':joketext', $_POST['jokeEntryUpdate']);
-    // $stq->bindValue(':id', $id3);
-    // $stq->execute();
-    
-    // echo $_POST['jokeEntryUpdate'];
+    // Got to the jokes.php page
     header('location: jokes.php');
-     
-    
+         
     // Catch error message
 } catch (PDOException $error) {
     $outputdb = "Connection To DB Failed".$error->getMessage().$error->getFile().$error->getLine();
 }
-} 
+}    
 else{
     // Start bufffer
     ob_start();
-    // include the jokes.html.php, this will be sotred in buffer
+    // include the jokes.html.php, this will be stored in buffer
     include __DIR__."/../templates/editJoke.html.php";
     $output = ob_get_clean();
     echo $output;

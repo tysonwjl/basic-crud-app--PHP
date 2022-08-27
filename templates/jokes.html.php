@@ -1,6 +1,7 @@
 <?php
+//reverse $jokes array
+$jokes = array_reverse($jokes);
 foreach($jokes as $joke){
-
     echo '<form action="deletejoke.php" method="post">
     <div class="col-12">' . $joke['joketext'];
 ?>
